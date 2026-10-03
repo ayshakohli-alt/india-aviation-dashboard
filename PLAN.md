@@ -4,7 +4,7 @@ This plan explains how we'll collect and tidy up the data for the dashboard.
 We'll do **one step at a time**. Before each step, Claude explains what it will do and why,
 then pauses afterwards so you can ask questions.
 
-**Status:** Steps 1–3 done. Step 4 partly done (11 of 12 monthly reports still missing; see Step 4). Next: Step 5.
+**Status:** Steps 1–3 and 5 done. Step 4 partly done (11 of 12 monthly reports still missing; see Step 4). Next: Step 6.
 
 ---
 
@@ -107,11 +107,17 @@ src/                  ← our Python scripts (small programs)
 A script, `src/clean.py`, will:
 - keep only the 12 months we want
 - make one tidy table with **one row per airline per month**, with columns such as
-  month, airline, flights, passengers, seats and load factor
+  month, airline, flights, passengers, seat-kilometres (seats × distance flown) and load factor
 - use the same name for each airline every time (for example, "Indigo" and "IndiGo" both become `IndiGo`)
 - group Air India and Air India Express together as "Air India Group", the same way DGCA does
 - turn dashes into zeros, and make sure numbers are stored as numbers, not text
 - work out **market share** for each airline each month
+
+**Done (3 October 2026):** `src/clean.py` saves 110 rows to `data/clean/airline_monthly.csv`
+(a plain-text table that also opens in Excel). Checks passed: all 12 months present, each airline
+once per month, no negative numbers, and every month adds up exactly to DGCA's total.
+Air India and Air India Express are kept as separate rows with an `airline_group` column,
+so the dashboard can show them together or apart.
 
 ### Step 6: Record on-time performance and cancellations (with Claude's help, checked)
 - For each of the 12 PDF reports, Claude reads the report and types the on-time performance and

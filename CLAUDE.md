@@ -72,6 +72,12 @@ The user is **non-technical** and is learning. Follow these rules:
 - Step 2 (folders) is done: `data/raw/excel/`, `data/raw/pdf/`, `data/manual/`, `src/`.
 - Step 3 (download Excel files) is done: `src/download.py` saves one file per airline per year,
   plus totals, to `data/raw/excel/`. Run it with `.\.venv\Scripts\python.exe src\download.py`.
-- Each Excel file has two tables: scheduled services first, then non-scheduled (charter) services.
-  Use the scheduled table only.
-- Next: Step 4 (download the 12 monthly PDF reports by hand).
+- Each airline's Excel file stacks four tables (scheduled domestic, scheduled international,
+  non-scheduled domestic, non-scheduled international), each with a title row. Use only
+  "Scheduled Domestic Services". `src/clean.py` finds it by its title.
+- Step 4 (monthly PDF reports) is partly done: only September 2025 of the 12 target months is
+  downloaded so far (see PLAN.md). Some bonus 2025 reports are also saved.
+- Step 5 (cleaning) is done: `src/clean.py` writes `data/clean/airline_monthly.csv`, with one row per
+  airline per month (Sep 2025 – Aug 2026), plus market share. It checks that the airlines add up to DGCA's totals.
+- Flybig stopped scheduled flights after October 2025, so it has only two months of data.
+- Next: Step 6 (record on-time performance and cancellations from the PDFs).

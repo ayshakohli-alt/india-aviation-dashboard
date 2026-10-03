@@ -7,6 +7,7 @@ __pycache__/
 
 # Downloaded files and the database - recreated by running the scripts
 data/raw/
+data/clean/
 data/*.db
 
 # Streamlit's local secrets file, if we ever add one
