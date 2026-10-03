@@ -4,7 +4,7 @@ This plan explains how we'll collect and tidy up the data for the dashboard.
 We'll do **one step at a time**. Before each step, Claude explains what it will do and why,
 then pauses afterwards so you can ask questions.
 
-**Status:** Step 1 done. Next: Step 2.
+**Status:** Steps 1–3 done. Next: Step 4.
 
 ---
 
@@ -19,8 +19,9 @@ Each month it publishes **two kinds of files**. We need both.
 - **What's in them:** for each airline, each month: flights flown, **passengers carried**,
   seats available, and **load factor** (how full the planes were, as a percentage).
 - **Market share** isn't listed, but it's easy to work out: one airline's passengers ÷ all passengers.
-- **Format:** Excel files, one per year (for example `totaldom26.xlsx` for 2026). They sit at fixed
-  web addresses, so a small program can download them automatically.
+- **Format:** Excel files, **one per airline per year** (for example `indigo26.xlsx`), plus one file
+  per year with the totals for all airlines (`totaldom26.xlsx`). Each has one row per month. They sit at
+  fixed web addresses, so a small program can download them automatically.
 - **Quirks to fix:** extra heading rows, a dash ("-") used to mean zero, and airline names that
   change over time (for example, Vistara merged into Air India in November 2024).
 
@@ -71,8 +72,12 @@ src/                  ← our Python scripts (small programs)
 ```
 
 ### Step 3: Download the Excel files (automatic)
-- A script, `src/download.py`, fetches the 2025 and 2026 Excel files into `data/raw/excel/`.
-- It writes down when and where each file came from.
+- A script, `src/download.py`, fetches each airline's 2025 and 2026 Excel files, plus the
+  all-airline totals, into `data/raw/excel/`, with tidy names like `indigo_2026.xlsx`.
+- It writes down when and where each file came from in `download_log.csv`.
+- Files DGCA hasn't published are skipped with a note (for example, Flybig has no 2026 file).
+- **Checked:** for July and August 2026, the airlines add up exactly to DGCA's total, and
+  IndiGo's July share (67.4%) matches the news.
 
 ### Step 4: Download the 12 monthly PDF reports (by hand, about 10 minutes)
 - The DGCA website doesn't give these files predictable web addresses, so it's simplest to

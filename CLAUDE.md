@@ -69,4 +69,9 @@ The user is **non-technical** and is learning. Follow these rules:
 - The step-by-step plan is in `PLAN.md`. Do one step at a time, and only when the user says to.
 - Step 1 (Python setup) is done: the virtual environment is in `.venv`, and the packages are listed in `requirements.txt`.
 - Run Python through the toolbox: `.\.venv\Scripts\python.exe` (Windows).
-- Next: Step 2 (create folders).
+- Step 2 (folders) is done: `data/raw/excel/`, `data/raw/pdf/`, `data/manual/`, `src/`.
+- Step 3 (download Excel files) is done: `src/download.py` saves one file per airline per year,
+  plus totals, to `data/raw/excel/`. Run it with `.\.venv\Scripts\python.exe src\download.py`.
+- Each Excel file has two tables: scheduled services first, then non-scheduled (charter) services.
+  Use the scheduled table only.
+- Next: Step 4 (download the 12 monthly PDF reports by hand).
