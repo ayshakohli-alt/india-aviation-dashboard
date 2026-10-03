@@ -29,8 +29,14 @@ not in scope yet. Don't build it unless the user asks.
 |------|------------|-------------------|
 | **Python** | A popular, beginner-friendly programming language | The language for all project code |
 | **pandas** | A Python library (a ready-made toolkit) for working with tables of data | Cleans and reshapes the raw DGCA data |
-| **DuckDB** | A small, fast database stored as a single file on the computer | Stores the cleaned data and answers questions about it |
+| **SQLite** | A small database stored as a single file, built into Python | Stores the cleaned data and answers questions about it |
 | **Streamlit** | A Python library that turns scripts into interactive web pages | Builds the dashboard the user will see and click through |
+
+**Why SQLite, not DuckDB:** DuckDB was the original choice, but Windows Smart App Control
+(a security feature that's switched on on the user's computer) blocks DuckDB from running. SQLite is
+built into Python and works. Don't suggest DuckDB again, or turning off Smart App Control,
+unless the user brings it up. Other packages that include their own compiled files may be blocked
+in the same way, so test any new package straight after installing it.
 
 Don't add other major tools or libraries without explaining why and getting the user's agreement first.
 
@@ -60,5 +66,7 @@ The user is **non-technical** and is learning. Follow these rules:
 
 ## Current status
 
-- Project just started. Only this CLAUDE.md file exists so far.
-- No code has been written yet. Wait for the user to say when to start coding.
+- The step-by-step plan is in `PLAN.md`. Do one step at a time, and only when the user says to.
+- Step 1 (Python setup) is done: the virtual environment is in `.venv`, and the packages are listed in `requirements.txt`.
+- Run Python through the toolbox: `.\.venv\Scripts\python.exe` (Windows).
+- Next: Step 2 (create folders).

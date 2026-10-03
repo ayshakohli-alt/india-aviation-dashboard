@@ -1,0 +1,13 @@
+# Python toolbox (virtual environment) - rebuild with: pip install -r requirements.txt
+.venv/
+
+# Python's temporary cache files
+__pycache__/
+*.pyc
+
+# Downloaded files and the database - recreated by running the scripts
+data/raw/
+data/*.db
+
+# Streamlit's local secrets file, if we ever add one
+.streamlit/secrets.toml

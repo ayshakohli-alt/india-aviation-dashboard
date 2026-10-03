@@ -4,7 +4,7 @@ This plan explains how we'll collect and tidy up the data for the dashboard.
 We'll do **one step at a time**. Before each step, Claude explains what it will do and why,
 then pauses afterwards so you can ask questions.
 
-**Status:** Not started yet.
+**Status:** Step 1 done. Next: Step 2.
 
 ---
 
@@ -54,7 +54,7 @@ labelled hand-typed file. That way we can always redo everything from scratch.
   don't mix with anything else on the computer.
 - Install the add-ons we need:
   - **pandas** for cleaning tables
-  - **DuckDB** for the database
+  - (the database, **SQLite**, is already built into Python, so it doesn't need installing)
   - **Streamlit** for the dashboard
   - **openpyxl** for reading Excel files
   - **requests** for downloading files
@@ -66,7 +66,7 @@ labelled hand-typed file. That way we can always redo everything from scratch.
 data/raw/excel/       ← original Excel files, never edited
 data/raw/pdf/         ← original monthly PDF reports, never edited
 data/manual/          ← the one hand-typed file (on-time performance & cancellations)
-data/aviation.duckdb  ← the cleaned database (made by code)
+data/aviation.db      ← the cleaned SQLite database (made by code)
 src/                  ← our Python scripts (small programs)
 ```
 
@@ -100,8 +100,8 @@ A script, `src/clean.py`, will:
 - This is slower than a fully automatic method, but much more reliable for chart-based PDFs.
 
 ### Step 7: Put everything into the database
-- A script, `src/load.py`, puts both tidy tables into `data/aviation.duckdb`, our single-file
-  database, ready for the dashboard.
+- A script, `src/load.py`, puts both tidy tables into `data/aviation.db`, our single-file
+  SQLite database, ready for the dashboard.
 
 ### Step 8: Save a Git snapshot
 - Save the scripts and the hand-typed file in Git.
