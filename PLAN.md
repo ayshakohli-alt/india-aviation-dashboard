@@ -4,7 +4,7 @@ This plan explains how we'll collect and tidy up the data for the dashboard.
 We'll do **one step at a time**. Before each step, Claude explains what it will do and why,
 then pauses afterwards so you can ask questions.
 
-**Status:** Steps 1–3 done. Next: Step 4.
+**Status:** Steps 1–3 done. Step 4 partly done (11 of 12 monthly reports still missing; see Step 4). Next: Step 5.
 
 ---
 
@@ -84,6 +84,24 @@ src/                  ← our Python scripts (small programs)
   download them from the website by hand.
 - Save them with clear names, like `data/raw/pdf/2025-09.pdf`, `2025-10.pdf`, and so on.
 - Claude will give you the exact clicks.
+
+**Progress (3 October 2026): partly done, continuing with what we have for now.**
+
+| Report | Status |
+|---|---|
+| September 2025 | ✅ Have it (`2025-09.pdf`) |
+| October 2025 – December 2025 | ❌ Missing |
+| January 2026 – August 2026 | ❌ Missing |
+
+- So we have **1 of the 12** target months. **11 are still missing**: October, November and
+  December 2025, and January to August 2026.
+- **Bonus reports:** we also have January, February and April to August **2025**
+  (`2025-01.pdf` to `2025-08.pdf`; March 2025 is missing). They're outside our 12-month window,
+  but useful for comparing with last year.
+- Some later downloads didn't save to the computer. Next time, check the browser's download
+  list (Ctrl + J) to see where files went.
+- Every report saved so far has been checked: it's a genuine DGCA report for the month in its
+  file name, 17 pages long.
 
 ### Step 5: Clean the Excel data (automatic)
 A script, `src/clean.py`, will:
