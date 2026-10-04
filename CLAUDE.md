@@ -101,4 +101,19 @@ The user is **non-technical** and is learning. Follow these rules:
   - Every chart's numbers also appear in the "See the data" tables.
 - Test the dashboard without a browser using `streamlit.testing.v1.AppTest`. Charts sit inside
   columns, so search nested elements; chart elements have type `vega_lite_chart`.
-- Next: add the missing PDF months (Steps 4 and 6 in PLAN.md) when the user downloads them. Add more PDF months to Step 6 whenever they're downloaded.
+- Next: add the missing PDF months (Steps 4 and 6 in PLAN.md) when the user downloads them.
+
+## GitHub
+
+- Repository: https://github.com/ayshakohli-alt/india-aviation-dashboard (**private**, branch `main`, remote `origin`).
+- This project's Git email is the GitHub private address `337064577+ayshakohli-alt@users.noreply.github.com`
+  (set in this project only, not computer-wide). All snapshots were rewritten to use it on 4 October 2026.
+  Never commit with the user's Gmail address.
+- Pushing from Claude's terminal: run `$env:GIT_TERMINAL_PROMPT = '1'; $env:GCM_INTERACTIVE = 'always'; git push`.
+  Without these, the push fails with "user interactivity has been disabled". The GitHub sign-in is saved
+  by Git Credential Manager.
+- Only push when the user asks ("push this"). Never force-push without asking first.
+- **Still to tidy up (when the user agrees):** two local-only copies of the old snapshots still carry the Gmail
+  address: the branch `backup-before-email-change` and `refs/original/` (left by `git filter-branch`). Delete both
+  before ever pushing other branches.
+- Before making the repository public, confirm with the user. Add more PDF months to Step 6 whenever they're downloaded.
