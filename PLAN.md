@@ -4,7 +4,7 @@ This plan explains how we'll collect and tidy up the data for the dashboard.
 We'll do **one step at a time**. Before each step, Claude explains what it will do and why,
 then pauses afterwards so you can ask questions.
 
-**Status:** Steps 1–3 and 5 done. Steps 4 and 6 partly done: only September 2025 of the 12 monthly reports is downloaded and recorded so far. Next: Step 7.
+**Status:** Steps 1–3, 5, 7 and 8 done. Steps 4 and 6 partly done: only September 2025 of the 12 monthly reports is downloaded and recorded so far. Next: build the dashboard, and add the missing reports when available.
 
 ---
 
@@ -143,6 +143,11 @@ so the dashboard can show them together or apart.
 ### Step 7: Put everything into the database
 - A script, `src/load.py`, puts both tidy tables into `data/aviation.db`, our single-file
   SQLite database, ready for the dashboard.
+
+**Done (4 October 2026):** the database has two tables, `airline_monthly` (110 rows) and
+`otp_cancellations` (10 rows). Running the script again replaces them rather than adding
+duplicates. They join on month + airline group (`airline_monthly.airline_group` =
+`otp_cancellations.airline`).
 
 ### Step 8: Save a Git snapshot
 - Save the scripts and the hand-typed file in Git.
