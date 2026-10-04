@@ -4,7 +4,7 @@ This plan explains how we'll collect and tidy up the data for the dashboard.
 We'll do **one step at a time**. Before each step, Claude explains what it will do and why,
 then pauses afterwards so you can ask questions.
 
-**Status:** Steps 1–3, 5, 7 and 8 done. Steps 4 and 6 partly done: only September 2025 of the 12 monthly reports is downloaded and recorded so far. Next: build the dashboard, and add the missing reports when available.
+**Status:** Steps 1–3, 5, 7 and 8 done. Steps 4 and 6 partly done: only September 2025 of the 12 monthly reports is downloaded and recorded so far. Next: build the dashboard (see "Dashboard plan" below), and add the missing reports when available.
 
 ---
 
@@ -162,6 +162,52 @@ duplicates. They join on month + airline group (`airline_monthly.airline_group` 
 - IndiGo's market share in **July 2026** is about **67%**, matching news reports.
 - Every airline appears exactly once for each month, with no blank or negative numbers.
 - A few rows of the hand-typed file match the PDF reports when checked side by side.
+
+---
+
+## Dashboard plan (first version)
+
+**Status:** Not started yet.
+
+**What it is:** a web page that runs on your own computer, made with Streamlit. It reads from
+our database (`data/aviation.db`) and shows interactive charts. Hovering over a chart shows the
+exact numbers.
+
+**Tools:** only what's already installed. Charts use **Altair**, the charting tool that comes
+with Streamlit. Both Altair and pyarrow (which Streamlit uses to show tables) were tested and
+aren't blocked by Windows Smart App Control.
+
+### Layout, top to bottom
+1. **Title and a month filter.** A slider to pick which months to show (September 2025 to August 2026).
+2. **Headline numbers:** four boxes for the latest month, each with the change from the month before:
+   - total passengers
+   - IndiGo's market share
+   - average load factor (how full planes were)
+   - number of airlines flying
+3. **Market share over time:** a line chart with one line each for IndiGo, Air India Group,
+   Akasa Air and SpiceJet, and the small airlines grouped as "Others". Each line is labelled at
+   its end, so colour isn't the only way to tell them apart.
+4. **Passengers per month:** a column chart of total domestic passengers, so dips and peaks
+   (like December 2025) show clearly.
+5. **On-time performance and cancellations:** two bar charts comparing airlines, with a clear note
+   saying **"September 2025 only, more months coming"** until the missing reports are added.
+6. **"See the data" section:** a table of the numbers behind the charts.
+
+### Design rules
+- Each airline keeps the **same colour on every chart**, from a colour set checked to be
+  distinguishable for people with colour blindness.
+- No chart has two different scales on it, which is a common way charts mislead.
+- Works in both light and dark mode.
+
+### Files
+- New: `src/dashboard.py`
+- To open the dashboard: `! .\.venv\Scripts\streamlit.exe run src\dashboard.py` (it opens in your web browser)
+
+### Steps (small steps, with a pause after each)
+- **A.** Title, month filter and headline numbers. Then open the dashboard and take a look.
+- **B.** Market share and passenger charts.
+- **C.** On-time/cancellations section and the data table.
+- **D.** Final check and a Git snapshot.
 
 ---
 

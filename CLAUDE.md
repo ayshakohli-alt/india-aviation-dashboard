@@ -92,4 +92,4 @@ The user is **non-technical** and is learning. Follow these rules:
 - On Windows PowerShell, inline `python -c "..."` commands with quotes inside break easily.
   Put check code in a temporary .py file instead.
 - Step 8 (Git snapshot) is done. The data plan in PLAN.md is complete apart from the missing PDF months.
-- Next: build the Streamlit dashboard (not planned in detail yet). Add more PDF months to Step 6 whenever they're downloaded.
+- Next: build the Streamlit dashboard, following "Dashboard plan" in PLAN.md (parts A–D, one at a time). Add more PDF months to Step 6 whenever they're downloaded.
