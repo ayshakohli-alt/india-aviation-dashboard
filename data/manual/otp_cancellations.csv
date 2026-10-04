@@ -1,0 +1,11 @@
+month,airline,otp_pct,cancellation_rate_pct,source_file,otp_page,cancellation_page
+2025-09,All airlines,,1.04,data/raw/pdf/2025-09.pdf,,2
+2025-09,IndiGo,87.4,0.62,data/raw/pdf/2025-09.pdf,6,2
+2025-09,Akasa Air,84.7,0.03,data/raw/pdf/2025-09.pdf,6,2
+2025-09,Air India Group,79.6,0.48,data/raw/pdf/2025-09.pdf,6,2
+2025-09,SpiceJet,65.1,2.58,data/raw/pdf/2025-09.pdf,6,2
+2025-09,Alliance Air,60.2,6.03,data/raw/pdf/2025-09.pdf,6,2
+2025-09,Star Air,,1.23,data/raw/pdf/2025-09.pdf,,2
+2025-09,Fly91,,1.49,data/raw/pdf/2025-09.pdf,,2
+2025-09,IndiaOne Air,,3.49,data/raw/pdf/2025-09.pdf,,2
+2025-09,Flybig,,65.97,data/raw/pdf/2025-09.pdf,,2

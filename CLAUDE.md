@@ -80,4 +80,10 @@ The user is **non-technical** and is learning. Follow these rules:
 - Step 5 (cleaning) is done: `src/clean.py` writes `data/clean/airline_monthly.csv`, with one row per
   airline per month (Sep 2025 – Aug 2026), plus market share. It checks that the airlines add up to DGCA's totals.
 - Flybig stopped scheduled flights after October 2025, so it has only two months of data.
-- Next: Step 6 (record on-time performance and cancellations from the PDFs).
+- Step 6 (on-time performance & cancellations) is partly done: `data/manual/otp_cancellations.csv`
+  has September 2025 only. Airline names there match `airline_group` in the clean table.
+  OTP is measured at six metro airports and given only for five airlines; cancellations cover all airlines.
+- Reading chart numbers from the PDFs: the normal text layout jumbles them. Use
+  `pdftotext -raw` and `pdftotext -table` (in the Bash terminal) and only accept numbers when both
+  modes agree. Record the page number for every value.
+- Next: Step 7 (load into the SQLite database). Add more PDF months to Step 6 whenever they're downloaded.

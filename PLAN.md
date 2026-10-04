@@ -4,7 +4,7 @@ This plan explains how we'll collect and tidy up the data for the dashboard.
 We'll do **one step at a time**. Before each step, Claude explains what it will do and why,
 then pauses afterwards so you can ask questions.
 
-**Status:** Steps 1–3 and 5 done. Step 4 partly done (11 of 12 monthly reports still missing; see Step 4). Next: Step 6.
+**Status:** Steps 1–3 and 5 done. Steps 4 and 6 partly done: only September 2025 of the 12 monthly reports is downloaded and recorded so far. Next: Step 7.
 
 ---
 
@@ -28,7 +28,9 @@ Each month it publishes **two kinds of files**. We need both.
 ### 2. Monthly "Traffic Data" report: the "how well" numbers
 - **What's in it:**
   - **On-time performance (OTP):** the share of flights that ran on time. It's measured only at the
-    four big metro airports: Bengaluru, Delhi, Hyderabad and Mumbai.
+    six big metro airports: Bengaluru, Delhi, Hyderabad, Mumbai, Chennai and Kolkata (older
+    reports, such as December 2024, used only the first four). It's given only for the five
+    larger airlines: IndiGo, Air India Group, Akasa Air, SpiceJet and Alliance Air.
   - **Cancellation rate** for each airline, plus the reasons (weather, technical faults, etc.)
   - Reasons for delays, passenger complaints, and passengers affected by long delays or denied boarding
   - A repeat of the market share and load factor numbers
@@ -127,6 +129,16 @@ so the dashboard can show them together or apart.
 - Each row notes which PDF and page the number came from, so anyone can check it.
 - We'll spot-check some numbers against news reports, and you can open any PDF to compare.
 - This is slower than a fully automatic method, but much more reliable for chart-based PDFs.
+
+**Progress (3 October 2026): started with the one report we have.**
+- September 2025 is recorded: 10 rows (9 airlines plus "All airlines"). On-time performance is
+  on page 6 of the report and cancellations on page 2.
+- Airline names match the `airline_group` column of the clean table (for example "Air India Group").
+- **How the numbers were checked:** the cancellation chart's text comes out jumbled, so it was
+  read in two other modes ("raw" and "table"), which agreed. All 15 numbers were then compared
+  automatically against the PDF text, and all matched. The airline rates, weighted by flights,
+  come to about 1.07%, close to the report's overall 1.04%.
+- **Still to do:** October 2025 to August 2026, once those reports are downloaded (see Step 4).
 
 ### Step 7: Put everything into the database
 - A script, `src/load.py`, puts both tidy tables into `data/aviation.db`, our single-file
