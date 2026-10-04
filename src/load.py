@@ -9,6 +9,7 @@ How to run (from the project folder):
 """
 
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 
 import pandas as pd
@@ -28,7 +29,8 @@ def main():
         if not path.exists():
             raise SystemExit(f"Missing {path.relative_to(PROJECT_FOLDER)}. Run src\\clean.py first.")
 
-    with sqlite3.connect(DATABASE_FILE) as database:
+    # closing() closes the database file at the end; the inner "database" saves the changes
+    with closing(sqlite3.connect(DATABASE_FILE)) as database, database:
         for table_name, path in TABLES.items():
             # Keep month as text ("2025-09") rather than letting pandas guess
             table = pd.read_csv(path, dtype={"month": str})

@@ -4,7 +4,7 @@ This plan explains how we'll collect and tidy up the data for the dashboard.
 We'll do **one step at a time**. Before each step, Claude explains what it will do and why,
 then pauses afterwards so you can ask questions.
 
-**Status:** Steps 1–3, 5, 7 and 8 done. Steps 4 and 6 partly done: only September 2025 of the 12 monthly reports is downloaded and recorded so far. Next: build the dashboard (see "Dashboard plan" below), and add the missing reports when available.
+**Status:** Steps 1–3, 5, 7 and 8 done. Steps 4 and 6 partly done: only September 2025 of the 12 monthly reports is downloaded and recorded so far. The first version of the dashboard is built (see "Dashboard plan" below). Next: add the missing reports when available.
 
 ---
 
@@ -167,7 +167,9 @@ duplicates. They join on month + airline group (`airline_monthly.airline_group` 
 
 ## Dashboard plan (first version)
 
-**Status:** Not started yet.
+**Status:** Done (4 October 2026). Parts A–D are complete. The on-time & cancellations section
+shows September 2025 only until more monthly reports are added (see Steps 4 and 6). It then
+picks up new months automatically.
 
 **What it is:** a web page that runs on your own computer, made with Streamlit. It reads from
 our database (`data/aviation.db`) and shows interactive charts. Hovering over a chart shows the

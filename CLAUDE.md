@@ -92,4 +92,13 @@ The user is **non-technical** and is learning. Follow these rules:
 - On Windows PowerShell, inline `python -c "..."` commands with quotes inside break easily.
   Put check code in a temporary .py file instead.
 - Step 8 (Git snapshot) is done. The data plan in PLAN.md is complete apart from the missing PDF months.
-- Next: build the Streamlit dashboard, following "Dashboard plan" in PLAN.md (parts A–D, one at a time). Add more PDF months to Step 6 whenever they're downloaded.
+- The dashboard (first version) is done: `src/dashboard.py`. Open it with
+  `.\.venv\Scripts\streamlit.exe run src\dashboard.py`, then go to http://localhost:8501.
+- Dashboard design rules:
+  - Each airline group has a fixed colour (`COLOURS` in `src/dashboard.py`; checked for colour blindness in light and dark mode).
+  - Keep the same colour for the same airline on every chart.
+  - Never use two y-axes on one chart.
+  - Every chart's numbers also appear in the "See the data" tables.
+- Test the dashboard without a browser using `streamlit.testing.v1.AppTest`. Charts sit inside
+  columns, so search nested elements; chart elements have type `vega_lite_chart`.
+- Next: add the missing PDF months (Steps 4 and 6 in PLAN.md) when the user downloads them. Add more PDF months to Step 6 whenever they're downloaded.
